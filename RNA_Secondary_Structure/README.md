@@ -1,4 +1,4 @@
-# 🧬 RNA Secondary Structure Prediction
+# RNA Secondary Structure Prediction
 
 ## Overview
 This project focuses on predicting the **secondary structure of RNA sequences** using **Dynamic Programming**. The approach follows the **Nussinov algorithm**, which identifies **optimal base pairings** to determine the most stable RNA fold.
