@@ -9,5 +9,3 @@ This project focuses on predicting the **secondary structure of RNA sequences** 
 - **Dot-Bracket Notation:** Converts base-pair mappings into a standard **dot-bracket format** for visualization.
 - **Efficient Computation:** Uses a **bottom-up DP approach** to optimize runtime.
 - **Result Visualization:** Outputs **dot-bracket notation** and base pairings for structure visualization.
-
-## File Structure
