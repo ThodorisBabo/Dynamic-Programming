@@ -1,4 +1,5 @@
 #  Eulerian Path
+
 ##  Overview
 This project demonstrates how to generate **random graphs** and determine whether they contain an **Eulerian Path** or **Eulerian Circuit**, using **Hierholzer's Algorithm**. It includes full visualization support using `networkx` and `matplotlib`.
 
