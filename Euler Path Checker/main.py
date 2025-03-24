@@ -1,5 +1,5 @@
 import random
-from collections import defaultdict, deque
+from collections import defaultdict
 import matplotlib.pyplot as plt
 import networkx as nx
 
@@ -72,35 +72,17 @@ def find_eulerian_path(graph):
             path.append(stack.pop())
     return path[::-1]
 
-# Step 5: Visualize the graph using NetworkX with subplots
-def visualize_graph(edges, path=None, directed=False):
-    G1 = nx.DiGraph() if directed else nx.Graph()
-    G2 = nx.DiGraph() if directed else nx.Graph()
-    G1.add_weighted_edges_from(edges)
-    G2.add_weighted_edges_from(edges)
-    pos1 = nx.spring_layout(G1)
-    pos2 = pos1.copy()
-
-    fig, axs = plt.subplots(1, 2, figsize=(14, 6))
+# ✅ Updated Visualization: Only the Original Graph
+def visualize_graph(edges, directed=False):
+    G = nx.DiGraph() if directed else nx.Graph()
+    G.add_weighted_edges_from(edges)
+    pos = nx.spring_layout(G)
     edge_labels = {(u, v): w for u, v, w in edges}
 
-    # Original Graph
-    nx.draw(G1, pos1, with_labels=True, node_color='skyblue', node_size=1000, edge_color='gray', width=2, font_size=14, ax=axs[0])
-    nx.draw_networkx_edge_labels(G1, pos1, edge_labels=edge_labels, ax=axs[0])
-    axs[0].set_title("Original Graph")
-
-    # Euler Path Highlighted
-    if path:
-        path_edges = list(zip(path, path[1:]))
-        nx.draw(G2, pos2, with_labels=True, node_color='lightgreen', node_size=1000, edge_color='gray', width=2, font_size=14, ax=axs[1])
-        nx.draw_networkx_edge_labels(G2, pos2, edge_labels=edge_labels, ax=axs[1])
-        nx.draw_networkx_edges(G2, pos2, edgelist=path_edges, edge_color='red', width=3, ax=axs[1])
-        axs[1].set_title("Euler Path Highlighted")
-    else:
-        nx.draw(G2, pos2, with_labels=True, node_color='lightcoral', node_size=1000, edge_color='gray', width=2, font_size=14, ax=axs[1])
-        nx.draw_networkx_edge_labels(G2, pos2, edge_labels=edge_labels, ax=axs[1])
-        axs[1].set_title("No Euler Path Found")
-
+    plt.figure(figsize=(7, 6))
+    nx.draw(G, pos, with_labels=True, node_color='skyblue', node_size=1000, edge_color='gray', width=2, font_size=14)
+    nx.draw_networkx_edge_labels(G, pos, edge_labels=edge_labels)
+    plt.title("Original Graph")
     plt.tight_layout()
     plt.show()
 
@@ -152,7 +134,7 @@ if __name__ == "__main__":
         total_weight = 0
         for i in range(len(path) - 1):
             for v, w in graph[path[i]]:
-                if v == path[i+1]:
+                if v == path[i + 1]:
                     total_weight += w
                     break
         print("Total cost of Euler path:", total_weight)
@@ -161,9 +143,8 @@ if __name__ == "__main__":
             print("The Euler path is a CIRCUIT (circular)")
         else:
             print("The Euler path is NOT a circuit (not circular)")
-        visualize_graph(edges, path, directed=DIRECTED)
     else:
         print("\nNo Euler Path found in this graph.")
-        visualize_graph(edges, directed=DIRECTED)
 
+    visualize_graph(edges, directed=DIRECTED)
     print(f"\nRandom Seed Used: {seed}")
