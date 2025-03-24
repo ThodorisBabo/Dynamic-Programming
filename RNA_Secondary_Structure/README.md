@@ -10,7 +10,7 @@ This project focuses on predicting the **secondary structure of RNA sequences** 
 - **Efficient Computation:** Uses a **bottom-up DP approach** to optimize runtime.
 - **Result Visualization:** Outputs **dot-bracket notation** and base pairings for structure visualization.
 
-## 🧾 Input & Output
+## Input & Output
 
 ### Input
 - A string representing an **RNA sequence** composed of characters: `A`, `U`, `C`, and `G`.
