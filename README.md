@@ -1,4 +1,4 @@
-# Algorithmic Problem Solving Projects
+# Algorithmic Projects
 
 ## Overview
 
